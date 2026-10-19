@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>More from Less: Australian Agricultural Productivity | FIT3179 DV2</title>
+  <!-- Pure.css & Google Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <!-- Vega & Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- HERO MASTHEAD -->
+    <header class="hero-banner">
+      <div class="hero-eyebrow">FIT3179 Data Visualisation 2 &bull; Australian Agricultural Productivity</div>
+      <h1 class="hero-title">More from Less: How Innovation, Climate &amp; Scale Reshaped the Australian Paddock</h1>
+      <p class="hero-subtitle">
+        Over the past four decades, Australian farmers have nearly doubled the volume of food and fibre produced per unit of land, labour, and capital—thriving on one of Earth's driest continents with virtually zero market-distorting subsidies.
+      </p>
+      <div class="kpi-strip">
+        <div class="kpi-box">
+          <div class="kpi-value">+1.52% p.a.</div>
+          <div class="kpi-label">Long-Term Broadacre Total Factor Productivity Growth</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value">$96.8 Billion</div>
+          <div class="kpi-label">Gross Value of Australian Agricultural Production</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value">Only 2.4%</div>
+          <div class="kpi-label">OECD Producer Support (2nd lowest farm subsidy in OECD)</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value">69.5% Share</div>
+          <div class="kpi-label">National output produced by the largest 10% of farms</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PLAIN ENGLISH EXPLAINER -->
+    <div class="callout-card">
+      <h3>What is Total Factor Productivity (TFP)?</h3>
+      <p style="margin:0;">
+        Rather than measuring single yields like tonnes of wheat per hectare, <strong>Total Factor Productivity (TFP)</strong> compares a farm's <em>total combined outputs</em> (crops, livestock, wool, milk) against its <em>total combined inputs</em> (land, labour, machinery, fuel, fertiliser, and chemicals). When TFP rises, farmers are producing <strong>more food and fibre from fewer resources</strong>.
+      </p>
+    </div>
+
+    <!-- SECTION 1: GEOGRAPHY & GLOBAL CONTEXT (3 MAP IDIOMS) -->
+    <section class="story-section" id="section-1">
+      <div class="section-header">
+        <div>
+          <div class="section-number">Section 01 &bull; Spatial &amp; International Context</div>
+          <h2 class="section-title">The Geography of Efficiency: From Regional Hubs to Global Peers</h2>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">1. Regional Value & Efficiency: Australian State Agricultural Output</h3><p class="chart-subtitle">Choropleth Map (Idiom #1) — Use the dropdown below to switch between Gross Production Value ($B), Annual TFP Growth (%), Cropping Share, and Water Efficiency</p></div>
+          <div id="vis01" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Insight:</strong> New South Wales, Queensland, and Victoria generate over $68B in combined output, but Western Australia leads long-term TFP growth (+1.92% p.a.) thanks to large-scale export grain operations.
+          </div>
+        </div>
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">2. Australia's Paddock Powerhouses: Regional Commodity Production Hubs</h3><p class="chart-subtitle">Proportional Symbol Map (Idiom #2) — Circle size encodes regional output ($M AUD); use the dropdown to filter hubs by farming sector</p></div>
+          <div id="vis02" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Insight:</strong> Production clusters heavily along the WA Wheatbelt, the Murray-Darling Basin (Riverina, Darling Downs, Wimmera), and coastal high-rainfall dairy belts in Gippsland and northern Tasmania.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-narrative-chart">
+        <div class="callout-card">
+          <h3>Competing Without a Safety Net</h3>
+          <p>
+            According to the <strong>OECD Agricultural Policy Monitoring and Evaluation (2025)</strong> and <strong>USDA International Productivity</strong> datasets, Australian farmers receive just <strong>2.4%</strong> of their gross receipts from government support—compared to 17.8% across the European Union, 37.6% in Japan, and 44.2% in South Korea.
+          </p>
+          <p style="margin-bottom:0;">
+            Exposure to global export competition forced Australian agriculture to innovate early, lifting its cumulative TFP index to <strong>164.2</strong> (1990 = 100).
+          </p>
+        </div>
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">3. High Efficiency, Low Subsidies: Global Agricultural TFP Index (1990 = 100)</h3><p class="chart-subtitle">Equal-Earth World Choropleth Map (Idiom #3) — USDA International TFP Index & OECD Producer Support (%)</p></div>
+          <div id="vis03" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Map Idiom #3 (Global Equal-Earth Choropleth):</strong> Hover over countries to compare cumulative TFP expansion against OECD Producer Support Estimate (PSE %) subsidies.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SECTORAL DIVERGENCE -->
+    <section class="story-section" id="section-2">
+      <div class="section-header">
+        <div>
+          <div class="section-number">Section 02 &bull; Sectoral Divergence</div>
+          <h2 class="section-title">The Great Realignment: How Cropping &amp; Canola Overtook the Sheep's Back</h2>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">4. Doing More With Less: Sector Input vs. Output Volume Index (1990 = 100)</h3><p class="chart-subtitle">Connected Dot Plot / Dumbbell Chart (Advanced Idiom #4) — Terracotta dot = 2024 Input Volume; Green dot = 2024 Output Volume</p></div>
+          <div id="vis04" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Insight:</strong> Broadacre cropping nearly doubled total output (index 198.6) while shrinking total input volume below 1990 levels (96.4) through zero-tillage, chemical fallow, and auto-steer machinery.
+          </div>
+        </div>
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">5. Shifting Fortunes: Real Gross Value Across Major Commodity Groups (1985–2025)</h3><p class="chart-subtitle">Streamgraph (Advanced Idiom #5) — Centred flow showing the expansion of grains, oilseeds, horticulture, and beef ($B AUD)</p></div>
+          <div id="vis05" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Insight:</strong> Real gross commodity value expanded from $33.9B in 1985 to nearly $98B by 2025, led by surging export demand for grains, beef, horticulture, and canola.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-narrative-chart">
+        <div class="callout-card">
+          <h3>From Wool to Wheat &amp; Oilseeds</h3>
+          <p>
+            In 1985, Australia still "rode on the sheep's back," with <strong>Wool &amp; Sheepmeat</strong> ranking #1 in real gross production value. Following the collapse of the Wool Reserve Price Scheme in 1991, land shifted rapidly into winter cropping and oilseeds.
+          </p>
+          <p style="margin-bottom:0;">
+            <strong>Oilseeds &amp; Canola</strong> climbed from #6 to #4 nationally as growers integrated canola into wheat rotations for disease break and export biofuel demand.
+          </p>
+        </div>
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">6. Dethroning Wool: National Commodity Value Rankings (1985–2025)</h3><p class="chart-subtitle">Bump Chart (Advanced Idiom #6) — Rank #1 at top; notice Wool falling from #1 to #6 as Oilseeds & Horticulture surge</p></div>
+          <div id="vis06" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Advanced Idiom #6 (Bump Chart):</strong> Tracks the ordinal ranking of Australia's six core commodity groups every five years from 1985 to 2025.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: DRIVERS OF PRODUCTIVITY (CLIMATE & R&D) -->
+    <section class="story-section" id="section-3">
+      <div class="section-header">
+        <div>
+          <div class="section-number">Section 03 &bull; The Engine Room</div>
+          <h2 class="section-title">Weathering the Droughts: Climate Volatility vs. Public R&amp;D Payoff</h2>
+        </div>
+      </div>
+
+      <div class="grid-1col">
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">7. Separating Weather from Innovation: Actual vs. Climate-Adjusted Broadacre TFP</h3><p class="chart-subtitle">Annotated Multi-Line Chart (Idiom #7) — Shaded bands show major droughts; dashed line reveals steady underlying technological progress</p></div>
+          <div id="vis07" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Insight:</strong> Observed TFP dips sharply during the Millennium Drought (2001–09) and the 2017–19 Eastern Drought. Yet ABARES' <em>Climate-Adjusted TFP</em> (amber dashed line) proves that underlying farm technology grew steadily throughout both crises.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">8. Climatic Whiplash: State Moisture & TFP Anomaly Matrix with Volatility Bar</h3><p class="chart-subtitle">Heatmap + Marginal Bar Combination (Advanced Idiom #8) — Red indicates drought TFP shock; green indicates wet-year surge</p></div>
+          <div id="vis08" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Advanced Idiom #8 (Heatmap + Marginal Bar):</strong> Eastern mainland states (NSW, QLD, VIC) suffer the widest annual moisture shocks, whereas WA's winter-dominant rainfall and Tasmania's irrigation buffer extreme volatility.
+          </div>
+        </div>
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">9. The Innovation Dividend: R&D Intensity vs. Long-Term Productivity Payoff</h3><p class="chart-subtitle">Lollipop Chart (Advanced Idiom #9) — Public & Rural RDC investment (% of GVP) directly powers annual TFP gains</p></div>
+          <div id="vis09" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Advanced Idiom #9 (Lollipop Chart):</strong> Sectors with the highest Research &amp; Development intensity (% of GVP)—Cotton and Winter Grains—deliver over 2.0% annual TFP growth and an 8:1 to 9:1 benefit-cost return.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: STRUCTURAL TRANSFORMATION (FARM SIZE) -->
+    <section class="story-section" id="section-4">
+      <div class="section-header">
+        <div>
+          <div class="section-number">Section 04 &bull; Structural Transformation</div>
+          <h2 class="section-title">The Rise of the Mega-Farm: Economies of Scale in the Paddock</h2>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">10. The Great Consolidation: Share of National Output by Farm Size Tier</h3><p class="chart-subtitle">Slope Chart (Advanced Idiom #10) — The largest 10% of commercial farms increased their output share from 44% to nearly 70%</p></div>
+          <div id="vis10" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Advanced Idiom #10 (Slope Chart):</strong> Disaggregating farm size shows that the largest 10% of farms now generate 69.5% of national broadacre output (up from 44% in the 1990s), while the smallest 45% of farms produce just 3.2%.
+          </div>
+        </div>
+        <div class="card">
+          <div class="chart-header"><h3 class="chart-title">11. Why Scale Wins: Cost-to-Output Ratio vs. Rate of Return by Farm Size</h3><p class="chart-subtitle">Butterfly / Diverging Bar Chart (Advanced Idiom #11) — Larger farms slash unit overhead (left) while multiplying capital returns (right)</p></div>
+          <div id="vis11" class="vis-container"></div>
+          <div class="chart-caption">
+            <strong>Advanced Idiom #11 (Butterfly Chart):</strong> Farms with over $5M in annual turnover operate at a 54.6% cost-to-output ratio and earn a 10.4% annual return on capital, compared to a 96.4% cost ratio for small farms.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER: METADATA, SOURCES & AI ACKNOWLEDGEMENT -->
+    <footer class="site-footer">
+      <div class="grid-2col" style="margin-bottom:0;">
+        <div>
+          <h4>Authorship &amp; Assessment Metadata</h4>
+          <p style="margin:0 0 8px;">
+            <strong>Author:</strong> Eben &bull; <strong>Unit:</strong> FIT3179 Data Visualisation 2 (Monash University) &bull; <strong>Date:</strong> October 2026
+          </p>
+          <p style="margin:0;">
+            <strong>AI Acknowledgement:</strong> Generative AI tools were used to assist in formatting Vega-Lite JSON specifications, CSS Grid layout styling, and proofreading narrative copy in accordance with Monash University FIT3179 guidelines. All visual encodings and domain narratives were critically verified against official statistical publications.
+          </p>
+        </div>
+        <div>
+          <h4>Primary Data Sources &amp; References</h4>
+          <ul style="margin:0; padding-left:18px;">
+            <li><a href="https://www.agriculture.gov.au/abares/research-topics/productivity/agricultural-productivity-estimates" target="_blank" rel="noopener">ABARES (2025) — Australian Farm Productivity: Broadacre and Dairy Estimates</a></li>
+            <li><a href="https://www.agriculture.gov.au/abares/research-topics/productivity/productivity-drivers" target="_blank" rel="noopener">ABARES — Productivity Drivers, Climate-Adjusted TFP &amp; Rural R&amp;D Investment</a></li>
+            <li><a href="https://www.agriculture.gov.au/abares/research-topics/surveys/disaggregating-farm-size" target="_blank" rel="noopener">ABARES — Disaggregating Farm Performance Statistics by Size</a></li>
+            <li><a href="https://www.abs.gov.au/statistics/industry/agriculture/value-agricultural-commodities-produced-australia" target="_blank" rel="noopener">Australian Bureau of Statistics (ABS) — Value of Agricultural Commodities Produced</a></li>
+            <li><a href="https://www.ers.usda.gov/data-products/international-agricultural-productivity" target="_blank" rel="noopener">USDA Economic Research Service — International Agricultural Productivity</a> &amp; <a href="https://www.oecd.org/en/publications/2025/10/agricultural-policy-monitoring-and-evaluation-2025_354e7040/full-report/australia_8123dd76.html" target="_blank" rel="noopener">OECD (2025)</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+</html>

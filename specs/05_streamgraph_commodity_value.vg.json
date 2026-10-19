@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 320,
+  "data": {
+    "url": "data/abs_commodity_history.csv"
+  },
+  "mark": {
+    "type": "area",
+    "interpolate": "monotone",
+    "opacity": 0.9
+  },
+  "encoding": {
+    "x": {
+      "field": "Date",
+      "type": "temporal",
+      "axis": {
+        "format": "%Y",
+        "title": "Year",
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "Real_Value_Billion_AUD",
+      "type": "quantitative",
+      "stack": "center",
+      "axis": null
+    },
+    "color": {
+      "field": "Commodity",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Wheat & Coarse Grains",
+          "Beef & Veal",
+          "Horticulture & Fruit",
+          "Oilseeds & Canola",
+          "Dairy & Milk",
+          "Wool & Sheepmeat"
+        ],
+        "range": [
+          "#1E4D3B",
+          "#C85A32",
+          "#D98A2B",
+          "#6B8E23",
+          "#3B6E8C",
+          "#8C6D53"
+        ]
+      },
+      "legend": {
+        "title": "Commodity Group",
+        "orient": "bottom",
+        "columns": 3
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "Commodity",
+        "type": "nominal",
+        "title": "Commodity Group"
+      },
+      {
+        "field": "Real_Value_Billion_AUD",
+        "type": "quantitative",
+        "title": "Real Value ($B AUD)",
+        "format": ".1f"
+      },
+      {
+        "field": "Rank",
+        "type": "ordinal",
+        "title": "National Value Rank"
+      }
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "font": "Source Sans 3, sans-serif",
+    "autosize": {
+      "type": "fit",
+      "contains": "padding"
+    },
+    "axis": {
+      "labelFontSize": 11.5,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "titleColor": "#232725",
+      "labelColor": "#454D48",
+      "gridColor": "#EAE3D2",
+      "domainColor": "#C7BFA8"
+    },
+    "legend": {
+      "labelFontSize": 11.5,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "titleColor": "#1E4D3B"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 320,
+  "data": {
+    "url": "data/abares_sector_shifts.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#9E9583",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "datum": 100
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#1E4D3B",
+        "strokeWidth": 4,
+        "opacity": 0.35
+      },
+      "encoding": {
+        "y": {
+          "field": "Sector",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null
+        },
+        "x": {
+          "field": "Input_Index_2024",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              60,
+              215
+            ]
+          },
+          "title": "Volume Index (1990 = 100 Base)"
+        },
+        "x2": {
+          "field": "Output_Index_2024"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 170,
+        "color": "#C85A32",
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "Sector",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "Input_Index_2024",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "Sector",
+            "type": "nominal"
+          },
+          {
+            "field": "Input_Index_2024",
+            "type": "quantitative",
+            "title": "2024 Input Volume Index"
+          },
+          {
+            "field": "Output_Index_2024",
+            "type": "quantitative",
+            "title": "2024 Output Volume Index"
+          },
+          {
+            "field": "Net_TFP_Gain_Pts",
+            "type": "quantitative",
+            "title": "Net Productivity Wedge (Pts)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 170,
+        "color": "#1E4D3B",
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "Sector",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "Output_Index_2024",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "Sector",
+            "type": "nominal"
+          },
+          {
+            "field": "Output_Index_2024",
+            "type": "quantitative",
+            "title": "2024 Output Volume Index"
+          },
+          {
+            "field": "Annual_TFP_Growth_Pct",
+            "type": "quantitative",
+            "title": "Annual TFP Growth (% p.a.)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#1E4D3B"
+      },
+      "encoding": {
+        "y": {
+          "field": "Sector",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "Output_Index_2024",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Output_Index_2024",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "font": "Source Sans 3, sans-serif",
+    "autosize": {
+      "type": "fit",
+      "contains": "padding"
+    },
+    "axis": {
+      "labelFontSize": 11.5,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "titleColor": "#232725",
+      "labelColor": "#454D48",
+      "gridColor": "#EAE3D2",
+      "domainColor": "#C7BFA8"
+    },
+    "legend": {
+      "labelFontSize": 11.5,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "titleColor": "#1E4D3B"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

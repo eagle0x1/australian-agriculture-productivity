@@ -1,0 +1,128 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 340,
+  "data": {
+    "url": "data/abs_commodity_history.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3.5,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Decade Benchmark Year",
+          "axis": {
+            "labelAngle": 0
+          }
+        },
+        "y": {
+          "field": "Rank",
+          "type": "ordinal",
+          "sort": "ascending",
+          "title": "National Rank by Gross Value (#1 = Highest)"
+        },
+        "color": {
+          "field": "Commodity",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Wheat & Coarse Grains",
+              "Beef & Veal",
+              "Horticulture & Fruit",
+              "Oilseeds & Canola",
+              "Dairy & Milk",
+              "Wool & Sheepmeat"
+            ],
+            "range": [
+              "#1E4D3B",
+              "#C85A32",
+              "#D98A2B",
+              "#6B8E23",
+              "#3B6E8C",
+              "#8C6D53"
+            ]
+          },
+          "legend": {
+            "title": "Commodity Group"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 180,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Rank",
+          "type": "ordinal",
+          "sort": "ascending"
+        },
+        "color": {
+          "field": "Commodity",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "ordinal"
+          },
+          {
+            "field": "Commodity",
+            "type": "nominal"
+          },
+          {
+            "field": "Rank",
+            "type": "ordinal",
+            "title": "Rank (#1 = Top)"
+          },
+          {
+            "field": "Real_Value_Billion_AUD",
+            "type": "quantitative",
+            "title": "Real Value ($B AUD)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "font": "Source Sans 3, sans-serif",
+    "autosize": {
+      "type": "fit",
+      "contains": "padding"
+    },
+    "axis": {
+      "labelFontSize": 11.5,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "titleColor": "#232725",
+      "labelColor": "#454D48",
+      "gridColor": "#EAE3D2",
+      "domainColor": "#C7BFA8"
+    },
+    "legend": {
+      "labelFontSize": 11.5,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "titleColor": "#1E4D3B"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}
