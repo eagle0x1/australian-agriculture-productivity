@@ -1,7 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 470,
-  "height": 370,
+  "height": 360,
+  "padding": {
+    "top": 8,
+    "bottom": 8,
+    "left": 6,
+    "right": 6
+  },
   "params": [
     {
       "name": "metricSelect",
@@ -28,9 +34,9 @@
     "type": "mercator",
     "center": [
       134.0,
-      -28.2
+      -29.0
     ],
-    "scale": 550
+    "scale": 475
   },
   "layer": [
     {
@@ -41,10 +47,29 @@
           "property": "features"
         }
       },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#EAE3D2",
+        "stroke": "#FBF8F3",
+        "strokeWidth": 1.8
+      }
+    },
+    {
+      "data": {
+        "url": "data/au_states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
       "transform": [
         {
-          "calculate": "datum.properties[metricSelect]",
-          "as": "ActiveValue"
+          "calculate": "metricSelect == 'GVAP_Billion_AUD' ? datum.properties.Score_GVAP_Billion_AUD : metricSelect == 'TFP_Annual_Growth_Pct' ? datum.properties.Score_TFP_Annual_Growth_Pct : metricSelect == 'Cropping_Share_Pct' ? datum.properties.Score_Cropping_Share_Pct : datum.properties.Score_Water_Efficiency_Index",
+          "as": "ColourScore"
+        },
+        {
+          "calculate": "metricSelect == 'GVAP_Billion_AUD' ? datum.properties.GVAP_Billion_AUD : metricSelect == 'TFP_Annual_Growth_Pct' ? datum.properties.TFP_Annual_Growth_Pct : metricSelect == 'Cropping_Share_Pct' ? datum.properties.Cropping_Share_Pct : datum.properties.Water_Efficiency_Index",
+          "as": "SelectedExactValue"
         }
       ],
       "mark": {
@@ -54,26 +79,41 @@
       },
       "encoding": {
         "color": {
-          "field": "ActiveValue",
+          "field": "ColourScore",
           "type": "quantitative",
           "scale": {
-            "scheme": "ygnbu",
-            "zero": false
+            "domain": [
+              10,
+              55,
+              100
+            ],
+            "range": [
+              "#E5E0CC",
+              "#68A678",
+              "#1E4D3B"
+            ]
           },
           "legend": {
-            "title": "Selected Metric",
-            "orient": "right",
-            "gradientLength": 140
+            "title": "Relative State Intensity (0 = Lowest, 100 = Highest)",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 220,
+            "values": [
+              15,
+              55,
+              100
+            ],
+            "labelExpr": "datum.value <= 20 ? 'Low' : datum.value == 55 ? 'Medium' : 'High (Leader)'"
           }
         },
         "tooltip": [
           {
-            "field": "properties.STATE_NAME",
+            "field": "properties.State",
             "type": "nominal",
             "title": "State / Territory"
           },
           {
-            "field": "ActiveValue",
+            "field": "SelectedExactValue",
             "type": "quantitative",
             "title": "Selected Metric Value",
             "format": ".2f"
@@ -123,8 +163,8 @@
       "mark": {
         "type": "text",
         "fontWeight": "bold",
-        "fontSize": 11.5,
-        "fill": "#132A20"
+        "fontSize": 11,
+        "fill": "#111A15"
       },
       "encoding": {
         "longitude": {
@@ -145,20 +185,20 @@
       "data": {
         "values": [
           {
-            "Lon": 120.5,
-            "Lat": -35.8,
-            "Note": "WA leads TFP growth (+1.92% p.a.)"
+            "Lon": 120.0,
+            "Lat": -35.5,
+            "Note": "WA: Highest TFP growth (+1.92% p.a.)"
           },
           {
-            "Lon": 147.0,
-            "Lat": -40.2,
-            "Note": "MDB drives NSW & VIC $45B+ output"
+            "Lon": 147.2,
+            "Lat": -41.2,
+            "Note": "MDB: $45B+ output"
           }
         ]
       },
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 10.5,
         "fontStyle": "italic",
         "fontWeight": 700,
         "fill": "#C85A32"
@@ -196,10 +236,12 @@
       "domainColor": "#C7BFA8"
     },
     "legend": {
-      "labelFontSize": 11.5,
-      "titleFontSize": 12,
+      "labelFontSize": 11,
+      "titleFontSize": 11.5,
       "titleFontWeight": 600,
-      "titleColor": "#1E4D3B"
+      "titleColor": "#1E4D3B",
+      "titleLimit": 260,
+      "labelLimit": 220
     },
     "view": {
       "stroke": "transparent"

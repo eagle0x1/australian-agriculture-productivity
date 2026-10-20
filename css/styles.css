@@ -145,7 +145,7 @@ html, body {
   grid-template-columns: 4fr 8fr;
   gap: 24px;
   margin-bottom: 24px;
-  align-items: center;
+  align-items: stretch;
 }
 
 /* Cards & Visualisation Containers */
@@ -258,7 +258,7 @@ html, body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
@@ -274,4 +274,56 @@ html, body {
 
 .card {
   overflow: hidden;
+}
+
+
+/* HD Rubric Polish: Sight-line alignment, 68ch typography measure, and subtle idiom pills */
+.callout-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.callout-card p, .section-lead {
+  max-width: 72ch;
+  line-height: 1.68;
+}
+
+.section-lead {
+  font-size: 1.04rem;
+  color: #363D39;
+  margin: -8px 0 20px 0;
+}
+
+.idiom-pill {
+  display: inline-block;
+  background: #EAE3D2;
+  color: #1E4D3B;
+  font-size: 0.73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+
+/* Full-width symmetrical section lead text */
+.section-lead {
+  max-width: 100% !important;
+  width: 100% !important;
+  font-size: 1.05rem;
+  color: #363D39;
+  margin: -6px 0 22px 0;
+  line-height: 1.65;
+}
+
+
+.vega-bind input[type="range"] {
+  accent-color: var(--eucalyptus-deep);
+  vertical-align: middle;
+  margin: 0 8px;
+  cursor: pointer;
 }

@@ -187,7 +187,7 @@
       "data": {
         "values": [
           {
-            "Year": 1982.8,
+            "Year": 1982.5,
             "Y": 188,
             "Label": "1982\u201383 Drought"
           },
@@ -198,14 +198,14 @@
           },
           {
             "Year": 2018.2,
-            "Y": 188,
+            "Y": 108,
             "Label": "2017\u201319 Drought"
           }
         ]
       },
       "mark": {
         "type": "text",
-        "fontSize": 11.5,
+        "fontSize": 11,
         "fontWeight": "bold",
         "fill": "#C85A32"
       },
@@ -236,16 +236,16 @@
       "data": {
         "values": [
           {
-            "Year": 2022,
-            "Y": 184.2,
+            "Year": 2021.0,
+            "Y": 188,
             "Note": "Record La Ni\u00f1a Harvest (184.2)"
           }
         ]
       },
       "mark": {
         "type": "text",
-        "dx": -65,
-        "dy": -10,
+        "dx": -20,
+        "dy": -12,
         "fontSize": 11,
         "fontWeight": "bold",
         "fill": "#1E4D3B"
@@ -291,8 +291,8 @@
       "domainColor": "#C7BFA8"
     },
     "legend": {
-      "labelFontSize": 11.5,
-      "titleFontSize": 12,
+      "labelFontSize": 11,
+      "titleFontSize": 11.5,
       "titleFontWeight": 600,
       "titleColor": "#1E4D3B",
       "labelLimit": 260

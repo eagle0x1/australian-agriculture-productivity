@@ -167,6 +167,40 @@
           "format": ".2f"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "X": 1.55,
+            "Industry": "Wool Production",
+            "Note": "\u2190 National Mean TFP (1.52% p.a.)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dy": 14,
+        "fontSize": 10.5,
+        "fontStyle": "italic",
+        "fontWeight": "bold",
+        "fill": "#C85A32"
+      },
+      "encoding": {
+        "x": {
+          "field": "X",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Industry",
+          "type": "nominal"
+        },
+        "text": {
+          "field": "Note",
+          "type": "nominal"
+        }
+      }
     }
   ],
   "config": {
